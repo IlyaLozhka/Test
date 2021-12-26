@@ -1,0 +1,77 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": false,
+      "objectLiteralDuplicateProperties": false
+    },
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import",
+    "react",
+    "jsx-a11y",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "quotes": ["warn","single"],
+    "eqeqeq": ["warn", "always"],
+    "max-len": ["warn", {"code": 200}],
+    "no-unused-vars": ["warn", { "caughtErrors": "none" }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "caughtErrors": "none" }],
+    "arrow-spacing": [
+      1,
+      { "before": true, "after": true }
+    ],
+    "block-spacing": ["warn", "always"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    },
+    "import/extensions": [
+      ".js",
+      ".mjs",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    }
+  }
+}

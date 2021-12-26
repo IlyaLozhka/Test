@@ -1,0 +1,15 @@
+.headerWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: cornflowerblue;
+    height: 5vh;
+}
+.navigation {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.navigationButtonWrapper {
+    display: flex;
+}
