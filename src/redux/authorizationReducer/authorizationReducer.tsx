@@ -1,5 +1,5 @@
 import { IAction, IAuthReducer } from './types';
-import { types } from './action-types';
+import { types } from './actionTypes';
 const initialState: IAuthReducer = {
 	isAuth: false,
 };

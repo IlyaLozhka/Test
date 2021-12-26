@@ -4,7 +4,8 @@ import { NavigationButton } from '../../utils/navigationButton/navigationButton'
 import { IProps } from './HeaderContainer';
 import { AuthorizationContainer } from '../modal/authorization/AuthorizationContainer';
 
-export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout }) => {
+export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout, pages , logo}) => {
+
   const [modalOpen, setModal] = useState<boolean>(false);
 
   const onLoginClick = () => {
@@ -20,11 +21,6 @@ export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout }) => {
     setModal(false)
   },[setModal])
 
-  const pages = [
-    { path: 'home', title: 'Home' },
-    { path: 'user', title: 'User' },
-    { path: 'transaction', title: 'Transaction' }
-  ];
 
   return (
     <div className={style.headerWrapper}>
@@ -33,8 +29,8 @@ export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout }) => {
       }
       <div className={style.navigation}>
 
-        <div>
-          LOGO
+        <div className={style.logotype}>
+          <img src={logo} alt='logotype' />
         </div>
 
         {
@@ -52,13 +48,14 @@ export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout }) => {
             </div>
             : null
         }
+
       </div>
 
       <div>
         {
           isAuth
-            ?  <button onClick={onLogoutClick}> Logout</button>
-            : <button onClick={onLoginClick}> Login</button>
+            ?  <div  className={style.logButton} onClick={onLogoutClick}> Logout</div>
+            : <div className={style.logButton} onClick={onLoginClick}> Login</div>
         }
       </div>
 

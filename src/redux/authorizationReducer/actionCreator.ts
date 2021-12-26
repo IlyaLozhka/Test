@@ -1,4 +1,4 @@
-import { types } from './action-types';
+import { types } from './actionTypes';
 import { IAction } from './types';
 
 export const setAuth = (value: boolean): IAction => {

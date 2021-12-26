@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: cornflowerblue;
+    background: #51ad6e;
     height: 5vh;
 }
 .navigation {
@@ -12,4 +12,29 @@
 }
 .navigationButtonWrapper {
     display: flex;
+}
+
+.logotype img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.logButton {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #3d3c3c;
+    color: azure;
+    transition: 0.5s;
+}
+
+.logButton:hover {
+    transform: scale(1.2);
+    background-color: #807d7d;
+    transition: 0.5s;
+}
+
+.logButton:active {
+    transform: scale(0.9);
+    transition: 0.5s;
 }

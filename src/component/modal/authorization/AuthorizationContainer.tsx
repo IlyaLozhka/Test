@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Authorization } from './Authorization';
 import { Dispatch } from 'react';
-import { setAuth } from '../../../redux/authorizationReducer/action-creator';
+import { setAuth } from '../../../redux/authorizationReducer/actionCreator';
 import { IAction } from '../../../redux/authorizationReducer/types';
 
 

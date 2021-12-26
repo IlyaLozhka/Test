@@ -3,6 +3,4 @@ export interface IPages {
   readonly title: string;
 }
 
-export interface IProps {
-  readonly pages: Array<IPages>;
-}
+

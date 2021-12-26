@@ -1,12 +1,26 @@
 .Wrapper {
     margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #3d3c3c;
+    color: azure;
+    transition: 0.8s;
 }
 
-.NavigationButton {
-    background-color: antiquewhite;
+
+.Wrapper a {
+    text-decoration: none;
     outline: none;
 }
-
-a {
-    text-decoration: none;
+.Wrapper a:visited {
+    color: azure;
+}
+.Wrapper:hover {
+    transform: scale(1.2);
+    background-color: #807d7d;
+    transition: 0.8s;
+}
+.Wrapper:active {
+    transform: scale(0.9);
+    transition: 0.8s;
 }
