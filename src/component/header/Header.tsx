@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState, ReactNode } from 'react';
+import React, { FC,  useState, ReactNode } from 'react';
 import style from './Header.module.css';
 import { Authorization } from '../modal/authorization/Authorization';
 import { useAuth } from '../../redux/authorization/selector';
@@ -29,7 +29,7 @@ export const Header: FC<HeaderProps> = ({ logo }) => {
 						<button onClick={() => navigate('/home')}>Home</button>
 						<button onClick={() => navigate('/user')}>User</button>
 						<button onClick={() => navigate('/transactions')}>
-							Transactons
+							Transactions
 						</button>
 					</div>
 				) : null}
