@@ -1,5 +1,9 @@
-import { IAuthReducer } from './authorizationReducer/types';
-
-export interface IStore {
-	readonly authorizationReducer: IAuthReducer;
+export interface GenericAction<T = void> {
+	type: string;
+	payload: T;
 }
+
+export type PayloadAction<T, P> = {
+	type: T;
+	payload: P;
+};

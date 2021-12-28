@@ -1,34 +1,16 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import style from './Content.module.css';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from '../home/HomePage';
 import { UserPage } from '../user/UserPage';
 import { TransactionPage } from '../transaction/TransactionPage';
-import { IProps } from './ContentContainer';
 import { StartPage } from '../startPage/startPage';
+import { useAuth } from '../../redux/authorization/selector';
 
-const Content: FunctionComponent<IProps> = ({ isAuth }) => {
+const Content: FC = ({ children }) => {
+	const { auth } = useAuth();
 
-  const redirect = () => {
-    if(!isAuth) {
-      return <>
-        <Route path={'/'} element={<StartPage />} />
-      </>
-    }
-    return <>
-      <Route path={'/home'} element={<HomePage />} />
-      <Route path={'/user'} element={<UserPage />} />
-      <Route path={'/transaction'} element={<TransactionPage />} />
-    </>
-  };
-
-  return (
-    <div className={style.contentWrapper}>
-      <Routes>
-        {redirect()}
-      </Routes>
-    </div>
-  );
+	return <div className={style.contentWrapper}>{children}</div>;
 };
 
 export default Content;
