@@ -1,64 +1,51 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState, ReactNode } from 'react';
 import style from './Header.module.css';
-import { NavigationButton } from '../../utils/navigationButton/navigationButton';
-import { IProps } from './HeaderContainer';
-import { AuthorizationContainer } from '../modal/authorization/AuthorizationContainer';
+import { Authorization } from '../modal/authorization/Authorization';
+import { useAuth } from '../../redux/authorization/selector';
+import { useNavigate } from 'react-router-dom';
 
-export const Header: FunctionComponent<IProps> = ({ isAuth, setLogout, pages , logo}) => {
+export interface HeaderProps {
+	logo: ReactNode;
+}
 
-  const [modalOpen, setModal] = useState<boolean>(false);
+export const Header: FC<HeaderProps> = ({ logo }) => {
+	const { auth } = useAuth();
+	const navigate = useNavigate();
+	const [modalOpen, setModal] = useState<boolean>(false);
 
-  const onLoginClick = () => {
-    setModal(true);
-  };
+	const login = () => setModal(true);
+	const logout = () => setModal(false);
+	const closeModal = () => setModal(false);
 
-  const onLogoutClick = () => {
-    setLogout(false);
-    setModal(false);
-  };
+	return (
+		<div className={style.headerWrapper}>
+			{modalOpen && !auth.isAuth ? (
+				<Authorization closeModal={() => closeModal()} />
+			) : null}
+			<div className={style.navigation}>
+				<div className={style.logotype}>{logo}</div>
+				{auth.isAuth ? (
+					<div className={style.navigationButtonWrapper}>
+						<button onClick={() => navigate('/home')}>Home</button>
+						<button onClick={() => navigate('/user')}>User</button>
+						<button onClick={() => navigate('/transactions')}>
+							Transactons
+						</button>
+					</div>
+				) : null}
+			</div>
 
-  const onModalClose = useCallback(() => {
-    setModal(false)
-  },[setModal])
-
-
-  return (
-    <div className={style.headerWrapper}>
-      {
-        modalOpen && !isAuth ? <AuthorizationContainer onModalClose={onModalClose}/> : null
-      }
-      <div className={style.navigation}>
-
-        <div className={style.logotype}>
-          <img src={logo} alt='logotype' />
-        </div>
-
-        {
-          isAuth
-            ? <div className={style.navigationButtonWrapper}>
-              {pages.map((element) => {
-                return (
-                  <NavigationButton
-                    key={element.title}
-                    path={element.path}
-                    title={element.title}
-                  />
-                );
-              })}
-            </div>
-            : null
-        }
-
-      </div>
-
-      <div>
-        {
-          isAuth
-            ?  <div  className={style.logButton} onClick={onLogoutClick}> Logout</div>
-            : <div className={style.logButton} onClick={onLoginClick}> Login</div>
-        }
-      </div>
-
-    </div>
-  );
+			<div>
+				{auth.isAuth ? (
+					<div className={style.logButton} onClick={logout}>
+						Logout
+					</div>
+				) : (
+					<div className={style.logButton} onClick={login}>
+						Login
+					</div>
+				)}
+			</div>
+		</div>
+	);
 };
