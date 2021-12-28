@@ -1,28 +1,38 @@
 import React, { FC } from 'react';
 import { Content } from './component/content/Content';
-import { Route, Routes } from 'react-router-dom';
-import { HomePage } from './component/home/HomePage';
-import { UserPage } from './component/user/UserPage';
-import { TransactionPage } from './component/transaction/TransactionPage';
-import { StartPage } from './component/startPage/startPage';
 
+
+import { RoutesConfig } from './component/routesConfig/RoutesConfig';
+import { HomePage } from './component/home/HomePage';
+import { StartPage } from './component/startPage/startPage';
+import { TransactionPage } from './component/transaction/TransactionPage';
+import { UserPage } from './component/user/UserPage';
 
 export const App:FC = () => {
 
-  const routeConfig = {
+const routes = [
+  {
     path: '/home',
-    element: HomePage,
-  };
+    element: <HomePage/>,
+  },
+  {
+    path: '/user',
+    element: <UserPage/>,
+  },
+  {
+    path: '/transaction',
+    element: <TransactionPage/>,
+  },
+  {
+    path: '/',
+    element: <StartPage/>,
+  },
+];
 
   return (
     <div>
       <Content>
-        <Routes>
-          <Route path='/home' element={<HomePage />} />
-          <Route path='/user' element={<UserPage />} />
-          <Route path='/transactions' element={<TransactionPage />} />
-          <Route path='/' element={<StartPage />} />
-        </Routes>
+        <RoutesConfig routes = {routes}/>
       </Content>
     </div>
   )
