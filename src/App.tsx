@@ -1,15 +1,29 @@
-import React, { FunctionComponent } from 'react';
-import style from './App.module.css';
-import Footer from './component/footer/Footer';
-import { Header } from './component/header/Header';
-import Content from './component/content/Content';
-import { Logo } from './component/shared/Logo';
+import React, { FC } from 'react';
+import { Content } from './component/content/Content';
+import { Route, Routes } from 'react-router-dom';
+import { HomePage } from './component/home/HomePage';
+import { UserPage } from './component/user/UserPage';
+import { TransactionPage } from './component/transaction/TransactionPage';
+import { StartPage } from './component/startPage/startPage';
 
-export const App: FunctionComponent = () => {
-	return (
-		<div className={style.appWrapper}>
-			<Content />
-			<Footer />
-		</div>
-	);
+
+export const App:FC = () => {
+
+  const routeConfig = {
+    path: '/home',
+    element: HomePage,
+  };
+
+  return (
+    <div>
+      <Content>
+        <Routes>
+          <Route path='/home' element={<HomePage />} />
+          <Route path='/user' element={<UserPage />} />
+          <Route path='/transactions' element={<TransactionPage />} />
+          <Route path='/' element={<StartPage />} />
+        </Routes>
+      </Content>
+    </div>
+  )
 };
