@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import { Content } from './views/content/Content';
-
-
 import { RoutesConfig } from './component/routesConfig/RoutesConfig';
 import { HomePage } from './views/home/HomePage';
 import { StartPage } from './views/startPage/startPage';
