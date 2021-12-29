@@ -1,12 +1,13 @@
 import React, { FC,  useState, ReactNode } from 'react';
 import style from './Header.module.css';
-import { Authorization } from '../../component/modal/authorization/Authorization';
+import { Authorization } from '../authorization/Authorization';
 import { useAuth } from '../../redux/authorization/selector';
 import { HomeButton } from '../../component/navigationButtons/home/HomeButton';
 import { UserButton } from '../../component/navigationButtons/user/UserButton';
 import { TransactionButton } from '../../component/navigationButtons/transaction/TransactionButton';
 import { useDispatch } from 'react-redux';
 import { AUTH_TYPE } from '../../redux/authorization/actions';
+import { ModalContainer } from '../../component/modal/ModalContainer';
 
 export interface HeaderProps {
 	logo: ReactNode;
@@ -38,7 +39,7 @@ export const Header: FC<HeaderProps> = ({ logo }) => {
 	return (
 		<div className={style.headerWrapper}>
 			{modalOpen && !auth.isAuth ? (
-				<Authorization closeModal={() => closeModal()} />
+				<ModalContainer component={	<Authorization closeModal={() => closeModal()} />}/>
 			) : null}
 			<div className={style.navigation}>
 				<div className={style.logotype}>{logo}</div>
