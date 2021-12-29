@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { Content } from './component/content/Content';
+import { Content } from './views/content/Content';
 
 
 import { RoutesConfig } from './component/routesConfig/RoutesConfig';
-import { HomePage } from './component/home/HomePage';
-import { StartPage } from './component/startPage/startPage';
-import { TransactionPage } from './component/transaction/TransactionPage';
-import { UserPage } from './component/user/UserPage';
+import { HomePage } from './views/home/HomePage';
+import { StartPage } from './views/startPage/startPage';
+import { TransactionPage } from './views/transaction/TransactionPage';
+import { UserPage } from './views/user/UserPage';
 
 export const App:FC = () => {
 
