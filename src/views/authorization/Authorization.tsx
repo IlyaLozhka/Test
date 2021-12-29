@@ -1,14 +1,10 @@
 import React, { FC, useState } from 'react';
 import styles from './Authorization.module.css';
-import ReactDOM from 'react-dom';
-import { MOCK_USER } from '../../../constatnts/userMock';
+import { MOCK_USER } from '../../constatnts/userMock';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import { AUTH_TYPE } from '../../../redux/authorization/actions';
+import { AUTH_TYPE } from '../../redux/authorization/actions';
 
-let rootModal = document.createElement('div');
-rootModal.id = 'rootModal';
-document.body.appendChild(rootModal);
 
 export interface AuthorizationProps {
 	closeModal: () => void;
@@ -38,11 +34,11 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 		}
 	};
 
-	return ReactDOM.createPortal(
+	return (
 		<div className={styles.authWrapper}>
 			<div className={styles.label}>
 				<span>
-					{<h2> Authorization</h2>  /*{==========TITLE =======}*/}
+					{<h2> Authorization</h2>  }
 				</span>
 				<div className={styles.line} />
 			</div>
@@ -86,7 +82,6 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 			<div className={styles.authButton} onClick={closeModal}>
 				Cancel
 			</div>
-		</div>,
-		rootModal
+		</div>
 	);
 };
