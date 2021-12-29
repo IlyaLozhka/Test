@@ -1,0 +1,19 @@
+.navigateButton {
+    margin: 0 20px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #3d3c3c;
+    color: azure;
+    transition: 0.5s;
+}
+
+.navigateButton:hover {
+    transform: scale(1.2);
+    background-color: #807d7d;
+    transition: 0.5s;
+}
+
+.navigateButton:active {
+    transform: scale(0.9);
+    transition: 0.5s;
+}
