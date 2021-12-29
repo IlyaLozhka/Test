@@ -42,7 +42,7 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 		<div className={styles.authWrapper}>
 			<div className={styles.label}>
 				<span>
-					<h2> Authorization</h2>
+					{<h2> Authorization</h2>  /*{==========TITLE =======}*/}
 				</span>
 				<div className={styles.line} />
 			</div>

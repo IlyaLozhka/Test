@@ -1,10 +1,10 @@
 import React, { FC,  useState, ReactNode } from 'react';
 import style from './Header.module.css';
-import { Authorization } from '../modal/authorization/Authorization';
+import { Authorization } from '../../component/modal/authorization/Authorization';
 import { useAuth } from '../../redux/authorization/selector';
-import { HomeButton } from '../navigationButtons/home/HomeButton';
-import { UserButton } from '../navigationButtons/user/UserButton';
-import { TransactionButton } from '../navigationButtons/transaction/TransactionButton';
+import { HomeButton } from '../../component/navigationButtons/home/HomeButton';
+import { UserButton } from '../../component/navigationButtons/user/UserButton';
+import { TransactionButton } from '../../component/navigationButtons/transaction/TransactionButton';
 import { useDispatch } from 'react-redux';
 import { AUTH_TYPE } from '../../redux/authorization/actions';
 
