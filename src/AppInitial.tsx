@@ -3,14 +3,14 @@ import style from './AppInitial.module.css';
 import { Logo } from './component/shared/Logo';
 import { Header } from './views/header/Header';
 import { Footer } from './views/footer/Footer';
-import { App } from './App';
 
 
-export const AppInitial: FunctionComponent = () => {
+
+export const AppInitial: FunctionComponent = ({children}) => {
 	return (
 		<div className={style.appWrapper}>
 			<Header logo={<Logo />} />
-				<App/>
+			{children}
 			<Footer/>
 		</div>
 	);
