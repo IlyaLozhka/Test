@@ -33,8 +33,3 @@ export const authorization = (
 			return state;
 	}
 };
-
-// dispatch({
-// 	type: C.SET_INVESTORS_PROFILES,
-// 	payload: investorsListResponse
-//   })
