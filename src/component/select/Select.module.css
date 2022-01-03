@@ -1,0 +1,8 @@
+.selectWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.selectChild {
+    padding: 0 10px;
+}

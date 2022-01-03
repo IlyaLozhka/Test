@@ -2,9 +2,9 @@ import React, { FC,  useState, ReactNode } from 'react';
 import style from './Header.module.css';
 import { Authorization } from '../authorization/Authorization';
 import { useAuth } from '../../redux/authorization/selector';
-import { HomeButton } from '../../component/navigationButtons/home/HomeButton';
-import { UserButton } from '../../component/navigationButtons/user/UserButton';
-import { TransactionButton } from '../../component/navigationButtons/transaction/TransactionButton';
+import { HomeButton } from '../../component/buttons/navigationButtons/home/HomeButton';
+import { UserButton } from '../../component/buttons/navigationButtons/user/UserButton';
+import { PostsButton } from '../../component/buttons/navigationButtons/posts/PostsButton';
 import { useDispatch } from 'react-redux';
 import { AUTH_TYPE } from '../../redux/authorization/actions';
 import { ModalContainer } from '../../component/modal/ModalContainer';
@@ -47,7 +47,7 @@ export const Header: FC<HeaderProps> = ({ logo }) => {
 					<div className={style.navigationButtonWrapper}>
 						<HomeButton/>
 						<UserButton/>
-						<TransactionButton/>
+						<PostsButton/>
 					</div>
 				) : null}
 			</div>

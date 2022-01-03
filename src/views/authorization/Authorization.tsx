@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import styles from './Authorization.module.css';
+import style from './Authorization.module.css';
 import { MOCK_USER } from '../../constatnts/userMock';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
@@ -35,17 +35,17 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 	};
 
 	return (
-		<div className={styles.authWrapper}>
-			<div className={styles.label}>
+		<div className={style.authWrapper}>
+			<div className={style.label}>
 				<span>
 					{<h2> Authorization</h2>  }
 				</span>
-				<div className={styles.line} />
+				<div className={style.line} />
 			</div>
 
-			<div className={styles.formWrapper}>
+			<div className={style.formWrapper}>
 				<form name='authorization'>
-					<div className={styles.formChildren}>
+					<div className={style.formChildren}>
 						<input
 							onChange={(e) => {
 								setEmail(e.target.value);
@@ -55,7 +55,7 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 						/>
 					</div>
 
-					<div className={styles.formChildren}>
+					<div className={style.formChildren}>
 						<input
 							onChange={(e) => {
 								setPassword(e.target.value);
@@ -67,9 +67,9 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 
 					<div
 						className={classNames(
-							styles.authButton,
-							styles.formChildren,
-							styles.submit
+							style.authButton,
+							style.formChildren,
+							style.submit
 						)}
 						onClick={onSubmit}>
 						Login
@@ -77,9 +77,9 @@ export const Authorization: FC<AuthorizationProps> = ({ closeModal }) => {
 				</form>
 			</div>
 
-			{error && <div className={styles.error}>{error}</div>}
+			{error && <div className={style.error}>{error}</div>}
 
-			<div className={styles.authButton} onClick={closeModal}>
+			<div className={style.authButton} onClick={closeModal}>
 				Cancel
 			</div>
 		</div>

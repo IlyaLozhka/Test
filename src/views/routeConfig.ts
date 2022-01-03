@@ -1,6 +1,6 @@
 import { HomePage } from './home/HomePage';
 import { UserPage } from './user/UserPage';
-import { TransactionPage } from './transaction/TransactionPage';
+import { PostsPage } from './posts/PostsPage';
 import { StartPage } from './startPage/startPage';
 
 export const routes = [
@@ -13,8 +13,8 @@ export const routes = [
     component: UserPage,
   },
   {
-    path: '/transaction',
-    component: TransactionPage,
+    path: '/posts',
+    component: PostsPage,
   },
   {
     path: '/',
