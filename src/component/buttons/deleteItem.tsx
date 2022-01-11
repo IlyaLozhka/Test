@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
-import { Post } from '../../redux/users/posts/reducer';
 import style from './Button.module.css';
 import classNames from 'classnames';
 
 interface DeleteItemProps {
-  element: Post;
+  id: number;
   deleteFunction: Function;
 }
 
-export const DeleteItem: FC<DeleteItemProps> = ({ element, deleteFunction }) => {
+export const DeleteItem: FC<DeleteItemProps> = ({ id, deleteFunction }) => {
   return (
-    <div className={classNames(style.button, style.delete)} onClick={() => deleteFunction(element.id)}>
+    <div className={classNames(style.button, style.delete)} onClick={() => deleteFunction(id)}>
       <span>
         Delete
       </span>
