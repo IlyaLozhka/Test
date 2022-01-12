@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { Post } from '../../../redux/users/posts/reducer';
 import { useTableContext } from '../../../component/table/TableContext/TableContext';
 import { DeleteItem } from '../../../component/buttons/deleteItem';
+import { PostModel } from '../../../api/entities/post';
 
 interface PostTableBodyProps {
-  data: Post[];
+  data: PostModel[];
 }
 
 export const PostTableBody: FC<PostTableBodyProps> = ({ data }) => {
