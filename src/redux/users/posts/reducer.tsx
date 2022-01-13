@@ -1,14 +1,9 @@
 import { PostActionType, POSTS_TYPE } from './actions';
+import { PostModel } from '../../../api/entities/post';
 
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
 
 export interface PostState {
-  posts: Array<Post>;
+  posts: PostModel[];
 }
 
 const initialState = {

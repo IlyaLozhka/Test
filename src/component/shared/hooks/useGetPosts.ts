@@ -1,16 +1,25 @@
 import { useCallback } from 'react';
 import { POSTS_TYPE } from '../../../redux/users/posts/actions';
 import { useDispatch } from 'react-redux';
+import { api } from '../../../api';
 
 export const useGetPosts = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   return useCallback(async () => {
-    return await (
-      fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json())
-        .then((post) => dispatch({
+    try {
+      const postModel = await api.getPosts();
+
+      if (postModel) {
+        dispatch({
           type: POSTS_TYPE.SET_POSTS,
-          payload: post
-        })));  }, []);
+          payload: postModel
+        });
+      }
+    }
+    catch {
+      console.log('Some error');
+    }
+
+  }, []);
 };

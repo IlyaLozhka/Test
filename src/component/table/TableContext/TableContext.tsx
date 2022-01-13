@@ -1,5 +1,4 @@
-import React, { useContext, createContext, useState, ReactNode } from 'react';
-import { Post } from '../../../redux/users/posts/reducer';
+import React, { useContext, createContext, useState, ReactNode, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { tableSortFn } from '../utils';
 
@@ -10,13 +9,13 @@ interface TableContextValues {
   setOrderBy: React.Dispatch<React.SetStateAction<string>>;
   handleSort: (fieldName: string) => void;
   handleDelete: (id: number) => void;
-  handleSelect: (value: number) => void;
 }
 
 interface TableProviderProps<T> {
   children: ReactNode;
-  data: Array<T>;
+  data: T[];
   dispatchType: string;
+  recordCount:number;
 }
 
 
@@ -28,8 +27,7 @@ export const useTableContext = (): TableContextValues => {
   return c;
 };
 
-
-export const TableProvider = ({ children, data, dispatchType }: TableProviderProps<Post>) => {
+export const TableProvider:FC<TableProviderProps<{}>> = <T extends unknown>({ children, data, dispatchType, recordCount }: TableProviderProps<T>) => {
 
   const [orderBy, setOrderBy] = useState<string>('');
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
@@ -46,18 +44,8 @@ export const TableProvider = ({ children, data, dispatchType }: TableProviderPro
   };
 
   const handleDelete = (id: number) => {
-    const result = data.filter((element) => {
-      return element.id !== id;
-    });
-    dispatch({
-      type: dispatchType,
-      payload: result
-    });
-  };
-
-  const handleSelect = (value: number) => {
-    const result = data.filter((element) => {
-      return element.id - 1 < value;
+    const result = data.filter((element:T) => {
+      // return element.id !== id;
     });
     dispatch({
       type: dispatchType,
@@ -72,7 +60,6 @@ export const TableProvider = ({ children, data, dispatchType }: TableProviderPro
     setOrderBy,
     handleSort,
     handleDelete,
-    handleSelect
   };
 
   return (

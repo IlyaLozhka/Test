@@ -1,22 +1,21 @@
 import React, { FC, ReactNode } from 'react';
 import { Table } from './Table';
 import { TableProvider } from './TableContext/TableContext';
-import { Post } from '../../redux/users/posts/reducer';
-import { Select } from '../shared/select/Select';
-
 
 interface TableContainerProps<T> {
   tableBody: ReactNode;
   tableHead: ReactNode;
-  data: Array<T>;
+  data: T[];
   dispatchType: string;
+  recordCount: number;
 }
 
-export const TableContainer: FC<TableContainerProps<Post>> = ({ tableBody, tableHead, data, dispatchType }) => {
+export const TableContainer: FC<TableContainerProps<{}>> = <T,>(props:TableContainerProps<T>) => {
+
+  const { tableBody, tableHead, data, dispatchType, recordCount } = props;
 
   return (
-    <TableProvider data={data} dispatchType={dispatchType}>
-      <Select value={[5, 10, 15]} label={'Numbers of posts'} />
+    <TableProvider recordCount={recordCount} data={data} dispatchType={dispatchType}>
       <Table tableHead={tableHead} tableBody={tableBody} />
     </TableProvider>
   );
