@@ -1,0 +1,47 @@
+.notificationWrapper {
+    position: fixed;
+    z-index: 10;
+    width: 300px;
+    height: 100px;
+    background: #807d7d;
+    border: #3d3c3c 2px solid;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: calc(50% - 150px);
+    color: #3d3c3c;
+    font-size: 20px;
+    animation: anim 6100ms ease-in-out;
+}
+
+.success {
+    background: #9de8b1;
+    color: #51ad6e;
+    border: #51ad6e 2px solid;
+}
+
+.errors {
+    background: #e7c2be;
+    color: red;
+    border: red 2px solid;
+}
+
+@keyframes anim {
+    0% {
+        top: -100px;
+    }
+    5% {
+        top: 6vh;
+    }
+    85% {
+        top: 6vh;
+    }
+    90% {
+        top: -100px;
+    }
+    100%{
+        top: -100px;
+    }
+}
+

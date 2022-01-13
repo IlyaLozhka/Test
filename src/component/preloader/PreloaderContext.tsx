@@ -14,7 +14,7 @@ const PreloaderContext = createContext<PreloaderContextValues | undefined>(undef
 
 export const usePreloaderContext = (): PreloaderContextValues => {
   const c = useContext(PreloaderContext);
-  if (!c) throw new Error('useTableContext should be inced TableProvider');
+  if (!c) throw new Error('usePreloaderContext should be inced PreloaderProvider');
   return c;
 };
 
