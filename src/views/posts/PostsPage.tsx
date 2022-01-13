@@ -7,7 +7,6 @@ import { PostTableBody } from './tableContent/PostTableBody';
 import { PostTableHead } from './tableContent/PostTableHead';
 import { POSTS_TYPE } from '../../redux/users/posts/actions';
 import { Select } from '../../component/shared/select/Select';
-import { usePreloaderContext } from '../../component/preloader/PreloaderContext';
 
 const value = [5, 10, 15];
 
@@ -16,11 +15,10 @@ export const PostsPage: FC = () => {
   const { posts } = usePosts();
   const getPosts = useGetPosts();
   const [recordCount, setRecord] = useState<number>(value[0]);
-  const { setLoading, isLoading } = usePreloaderContext();
 
   useEffect(() => {
-    setLoading(isLoading => !isLoading);
-    getPosts().then(() => setLoading(isLoading => !isLoading));
+
+    getPosts();
   }, []);
 
   return (
