@@ -2,10 +2,10 @@ import React, { createContext, FC, ReactNode, useContext, useState } from 'react
 import { Notification } from './Notification';
 
 interface NotificationContextValues {
-  errors: string;
-  success: string;
-  setErrors: React.Dispatch<React.SetStateAction<string>>;
-  setSuccess: React.Dispatch<React.SetStateAction<string>>;
+  errorsMessage: string;
+  successMessage: string;
+  setErrorMessage: React.Dispatch<React.SetStateAction<string>>;
+  setSuccessMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface NotificationContextProps {
@@ -22,26 +22,26 @@ export const useNotificationContext = (): NotificationContextValues => {
 
 export const NotificationProvider: FC<NotificationContextProps> = ({ children }) => {
 
-  const [errors, setErrors] = useState<string>('');
-  const [success, setSuccess] = useState<string>('');
+  const [errorsMessage, setErrorMessage] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
 
   const handleClearNotification = () => {
-    setErrors('');
-    setSuccess('');
+    setErrorMessage('');
+    setSuccessMessage('');
   };
 
   const value = {
-    errors,
-    setErrors,
-    success,
-    setSuccess
+    errorsMessage,
+    setErrorMessage,
+    successMessage,
+    setSuccessMessage
   };
 
   return (
     <NotificationContext.Provider value={value}>
       {
-        errors || success ?
-          <Notification errors={errors} success={success} handleClearNotification={handleClearNotification} /> : null
+        errorsMessage || successMessage ?
+          <Notification errors={errorsMessage} success={successMessage} handleClearNotification={handleClearNotification} /> : null
       }
       {children}
     </NotificationContext.Provider>

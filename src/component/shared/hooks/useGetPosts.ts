@@ -8,7 +8,7 @@ import { useNotificationContext } from '../../notification/NotificationContext';
 export const useGetPosts = () => {
   const dispatch = useDispatch();
   const { setLoading } = usePreloaderContext();
-  const { setErrors, setSuccess } = useNotificationContext();
+  const { setErrorMessage, setSuccessMessage } = useNotificationContext();
 
   return useCallback(async () => {
     try {
@@ -19,10 +19,10 @@ export const useGetPosts = () => {
           type: POSTS_TYPE.SET_POSTS,
           payload: postModel
         });
-        setSuccess('Posts successful uploaded!');
+        setSuccessMessage('Posts successful uploaded!');
       }
     } catch (e: any) {
-      setErrors(e.message);
+      setErrorMessage(e.message);
     } finally {
       setLoading(isLoading => !isLoading);
     }

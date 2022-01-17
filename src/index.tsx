@@ -8,12 +8,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 
 ReactDOM.render(
-	<Provider store={store}>
-		<BrowserRouter>
-			<AppInitial>
-				<App/>
-			</AppInitial>
-		</BrowserRouter>
-	</Provider>,
-	document.getElementById('root')
+  <Provider store={store}>
+    <BrowserRouter>
+      <AppInitial>
+        <App/>
+      </AppInitial>
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
 );
