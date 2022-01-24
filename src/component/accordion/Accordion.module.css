@@ -1,0 +1,38 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    padding: 2px 10px;
+
+}
+
+.title {
+    padding: 10px 20px ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: #dddddd;
+}
+
+.title img.toggle {
+    width: 30px;
+    height: 30px;
+    transition: 0.5s;
+}
+
+.title img.toggle[aria-expanded='true'] {
+    transform: rotate(180deg);
+    transition: 0.5s;
+}
+
+.content {
+    display: flex;
+       background-color: #807d7d;
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 1s ease-in-out;
+    padding: 10px 20px;
+}
+

@@ -8,6 +8,7 @@ import { PostsButton } from '../../component/buttons/navigationButtons/posts/Pos
 import { useDispatch } from 'react-redux';
 import { AUTH_TYPE } from '../../redux/authorization/actions';
 import { ModalContainer } from '../../component/modal/ModalContainer';
+import { LoginButton } from '../../component/buttons/LoginButton';
 
 export interface HeaderProps {
 	logo: ReactNode;
@@ -17,7 +18,7 @@ export const Header: FC<HeaderProps> = ({ logo }) => {
 	const { auth } = useAuth();
 	const dispatch = useDispatch();
 
-	const [modalOpen, setModal] = useState<boolean>(false);
+	const [loginModalOpen, setModal] = useState<boolean>(false);
 
 	const login = () => setModal(true);
 	const logout = () => {
@@ -36,32 +37,30 @@ export const Header: FC<HeaderProps> = ({ logo }) => {
 
 	const closeModal = () => setModal(false);
 
-	return (
-		<div className={style.headerWrapper}>
-			{modalOpen && !auth.isAuth ? (
-				<ModalContainer component={	<Authorization closeModal={() => closeModal()} />}/>
-			) : null}
-			<div className={style.navigation}>
-				<div className={style.logotype}>{logo}</div>
-				{auth.isAuth ? (
-					<div className={style.navigationButtonWrapper}>
-						<HomeButton/>
-						<UserButton/>
-						<PostsButton/>
-					</div>
-				) : null}
-			</div>
-			<div>
-				{auth.isAuth ? (
-					<div className={style.logButton} onClick={logout}>
-						Logout
-					</div>
-				) : (
-					<div className={style.logButton} onClick={login}>
-						Login
-					</div>
-				)}
-			</div>
-		</div>
-	);
+  return (
+    <div className={style.headerWrapper}>
+
+      {loginModalOpen && !auth.isAuth ? (
+        <ModalContainer component={<Authorization closeModal={() => closeModal()} />} />
+      ) : null}
+
+      <div className={style.navigation}>
+        <div className={style.logotype}>{logo}</div>
+        {auth.isAuth ? (
+          <div className={style.navigationButtonWrapper}>
+            <HomeButton />
+            <UserButton />
+            <PostsButton />
+          </div>
+        ) : null}
+      </div>
+      <div>
+        {auth.isAuth
+          ? <LoginButton handleClick={logout} label={'Logout'} />
+          : <LoginButton handleClick={login} label={'Login'} />
+        }
+      </div>
+    </div>
+  );
 };
+
